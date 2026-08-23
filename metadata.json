@@ -1,0 +1,6 @@
+{
+  "name": "SkillBridge AI",
+  "description": "Intelligent diagnostic, portfolio gallery management, and adaptive 30-day sprint roadmap platform with real-time AST & Vector Delta skill gap analysis.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
