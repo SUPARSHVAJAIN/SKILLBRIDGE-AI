@@ -3,6 +3,7 @@ export type UserRole = 'student' | 'university' | 'recruiter';
 export interface User {
   id: string;
   email: string;
+  phone?: string;
   name: string;
   role: UserRole;
   avatar: string;
@@ -16,6 +17,16 @@ export interface User {
   skills: string[];
   createdAt: string;
   updatedAt: string;
+}
+
+export interface OtpDeliveryResponse {
+  success: boolean;
+  message: string;
+  maskedEmail: string;
+  maskedPhone: string;
+  sessionId?: string;
+  expiresInSeconds: number;
+  demoOtp: string; // Provided for frictionless preview / auto-fill
 }
 
 export interface GalleryMetric {

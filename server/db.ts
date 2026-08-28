@@ -21,17 +21,18 @@ export function hashPassword(password: string): string {
 const initialUsers: (User & { passwordHash: string })[] = [
   {
     id: 'user_student_1',
-    email: 'alex.rivera@techuniv.edu',
-    name: 'Alex Rivera',
+    email: 'suparshva.jain@techuniv.edu',
+    phone: '+1 (555) 349-2810',
+    name: 'SUPARSHVA JAIN',
     role: 'student',
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
     headline: 'Aspiring Cloud & Backend Engineer | CS Senior @ Tech University',
     bio: 'Passionate about building scalable distributed systems, microservices, and asynchronous event pipelines. Actively leveling up in Kubernetes, Redis caching, and CI/CD pipelines.',
     universityOrCompany: 'Tech University (Dept. of Computer Science)',
     targetRole: 'Junior Backend & Cloud Engineer',
-    githubUrl: 'https://github.com/alexrivera-dev',
-    linkedinUrl: 'https://linkedin.com/in/alexrivera-dev',
-    portfolioUrl: 'https://alexrivera.dev',
+    githubUrl: 'https://github.com/suparshvajain-dev',
+    linkedinUrl: 'https://linkedin.com/in/suparshvajain',
+    portfolioUrl: 'https://suparshvajain.dev',
     skills: ['TypeScript', 'Node.js', 'Python', 'FastAPI', 'PostgreSQL', 'Docker', 'REST APIs', 'Git'],
     passwordHash: hashPassword('password123'),
     createdAt: '2026-08-01T10:00:00.000Z',
@@ -40,6 +41,7 @@ const initialUsers: (User & { passwordHash: string })[] = [
   {
     id: 'user_univ_1',
     email: 'sarah.chen@techuniv.edu',
+    phone: '+1 (555) 782-9012',
     name: 'Dr. Sarah Chen',
     role: 'university',
     avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80',
@@ -57,6 +59,7 @@ const initialUsers: (User & { passwordHash: string })[] = [
   {
     id: 'user_recruiter_1',
     email: 'david.zhang@cloudscale.io',
+    phone: '+1 (555) 914-6372',
     name: 'David Zhang',
     role: 'recruiter',
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
@@ -77,7 +80,7 @@ const initialGallery: GalleryItem[] = [
   {
     id: 'proj_1',
     userId: 'user_student_1',
-    authorName: 'Alex Rivera',
+    authorName: 'SUPARSHVA JAIN',
     authorAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
     authorRole: 'student',
     title: 'Distributed Asynchronous Task Queue with Redis Streams',
@@ -90,8 +93,8 @@ const initialGallery: GalleryItem[] = [
       'https://images.unsplash.com/photo-1618401471353-b98aedd04e11?auto=format&fit=crop&w=1200&q=80'
     ],
     coverImage: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80',
-    repoUrl: 'https://github.com/alexrivera-dev/distributed-task-queue',
-    liveUrl: 'https://queue-telemetry.alexrivera.dev',
+    repoUrl: 'https://github.com/suparshvajain-dev/distributed-task-queue',
+    liveUrl: 'https://queue-telemetry.suparshvajain.dev',
     astScore: 94,
     astBreakdown: {
       complexityScore: 92,
@@ -123,7 +126,7 @@ const initialGallery: GalleryItem[] = [
   {
     id: 'proj_2',
     userId: 'user_student_1',
-    authorName: 'Alex Rivera',
+    authorName: 'SUPARSHVA JAIN',
     authorAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
     authorRole: 'student',
     title: 'FastAPI Microservice with PyTest Integration & OpenAPI Specs',
@@ -136,8 +139,8 @@ const initialGallery: GalleryItem[] = [
       'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80'
     ],
     coverImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80',
-    repoUrl: 'https://github.com/alexrivera-dev/fastapi-secure-service',
-    liveUrl: 'https://api-service.alexrivera.dev/docs',
+    repoUrl: 'https://github.com/suparshvajain-dev/fastapi-secure-service',
+    liveUrl: 'https://api-service.suparshvajain.dev/docs',
     astScore: 89,
     astBreakdown: {
       complexityScore: 86,
@@ -169,7 +172,7 @@ const initialGallery: GalleryItem[] = [
   {
     id: 'proj_3',
     userId: 'user_student_1',
-    authorName: 'Alex Rivera',
+    authorName: 'SUPARSHVA JAIN',
     authorAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
     authorRole: 'student',
     title: 'Semantic Vector Search Engine with ChromaDB & LangChain',
@@ -182,8 +185,8 @@ const initialGallery: GalleryItem[] = [
       'https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=1200&q=80'
     ],
     coverImage: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80',
-    repoUrl: 'https://github.com/alexrivera-dev/vector-semantic-search',
-    liveUrl: 'https://vector-demo.alexrivera.dev',
+    repoUrl: 'https://github.com/suparshvajain-dev/vector-semantic-search',
+    liveUrl: 'https://vector-demo.suparshvajain.dev',
     astScore: 91,
     astBreakdown: {
       complexityScore: 94,
@@ -407,9 +410,36 @@ class DatabaseService {
     }
   }
 
+  // In-memory OTP storage with automatic TTL
+  private otps = new Map<string, {
+    code: string;
+    expiresAt: number;
+    purpose: 'login' | 'register' | '2fa';
+    email: string;
+    phone: string;
+    userData?: any;
+  }>();
+
   // Auth & Users
   getUserByEmail(email: string): (User & { passwordHash: string }) | undefined {
-    return this.store.users.find(u => u.email.toLowerCase() === email.toLowerCase());
+    return this.store.users.find(u => u.email.toLowerCase() === email.toLowerCase().trim());
+  }
+
+  getUserByPhone(phone: string): (User & { passwordHash: string }) | undefined {
+    const cleanPhone = phone.replace(/[^0-9]/g, '');
+    if (!cleanPhone) return undefined;
+    return this.store.users.find(u => {
+      const userClean = (u.phone || '').replace(/[^0-9]/g, '');
+      return userClean && (userClean.endsWith(cleanPhone) || cleanPhone.endsWith(userClean));
+    });
+  }
+
+  getUserByIdentifier(identifier: string): (User & { passwordHash: string }) | undefined {
+    const cleanId = identifier.trim();
+    if (cleanId.includes('@')) {
+      return this.getUserByEmail(cleanId);
+    }
+    return this.getUserByPhone(cleanId) || this.getUserByEmail(cleanId);
   }
 
   getUserById(id: string): User | undefined {
@@ -419,10 +449,111 @@ class DatabaseService {
     return rest;
   }
 
+  maskEmail(email: string): string {
+    if (!email || !email.includes('@')) return email || '';
+    const [name, domain] = email.split('@');
+    if (name.length <= 2) return `${name.slice(0, 1)}***@${domain}`;
+    return `${name.slice(0, 2)}****${name.slice(-1)}@${domain}`;
+  }
+
+  maskPhone(phone: string): string {
+    if (!phone) return '+1 (555) ***-****';
+    const digits = phone.replace(/[^0-9]/g, '');
+    if (digits.length >= 10) {
+      const last4 = digits.slice(-4);
+      const prefix = phone.startsWith('+') ? phone.slice(0, 3) : '+1';
+      return `${prefix} (***) ***-${last4}`;
+    }
+    return phone.replace(/\d(?=\d{3})/g, '*');
+  }
+
+  // Generate and store an OTP for dual Email & Mobile delivery
+  createOtp(
+    identifier: string,
+    email: string,
+    phone: string,
+    purpose: 'login' | 'register' | '2fa',
+    userData?: any
+  ): { code: string; maskedEmail: string; maskedPhone: string; expiresInSeconds: number } {
+    // Generate a secure 6-digit numeric OTP
+    const code = Math.floor(100000 + Math.random() * 900000).toString();
+    const expiresInSeconds = 300; // 5 minutes
+    const expiresAt = Date.now() + expiresInSeconds * 1000;
+
+    const key = identifier.toLowerCase().trim();
+    this.otps.set(key, {
+      code,
+      expiresAt,
+      purpose,
+      email: email.toLowerCase().trim(),
+      phone: phone || '+1 (555) 349-2810',
+      userData
+    });
+
+    console.log(`[OTP DISPATCH] Dual Delivery for [${purpose.toUpperCase()}]:`);
+    console.log(`  📧 EMAIL to ${email} -> CODE: ${code}`);
+    console.log(`  📱 SMS/MOBILE to ${phone || 'default'} -> CODE: ${code}`);
+
+    return {
+      code,
+      maskedEmail: this.maskEmail(email),
+      maskedPhone: this.maskPhone(phone || '+1 (555) 349-2810'),
+      expiresInSeconds
+    };
+  }
+
+  verifyOtp(
+    identifier: string,
+    code: string,
+    purpose: 'login' | 'register' | '2fa'
+  ): { valid: boolean; error?: string; otpData?: { email: string; phone: string; userData?: any } } {
+    const key = identifier.toLowerCase().trim();
+    const stored = this.otps.get(key);
+
+    if (!stored) {
+      // Also check by email or clean phone
+      for (const [k, v] of this.otps.entries()) {
+        if (v.email.toLowerCase() === key || v.phone.replace(/[^0-9]/g, '') === key.replace(/[^0-9]/g, '')) {
+          if (v.expiresAt < Date.now()) {
+            this.otps.delete(k);
+            return { valid: false, error: 'The OTP code has expired. Please request a new code.' };
+          }
+          if (v.purpose !== purpose) {
+            return { valid: false, error: 'Invalid OTP purpose.' };
+          }
+          if (v.code !== code.trim()) {
+            return { valid: false, error: 'Incorrect 6-digit OTP code entered. Please try again.' };
+          }
+          this.otps.delete(k);
+          return { valid: true, otpData: { email: v.email, phone: v.phone, userData: v.userData } };
+        }
+      }
+      return { valid: false, error: 'No active OTP verification session found. Please request a new code.' };
+    }
+
+    if (stored.expiresAt < Date.now()) {
+      this.otps.delete(key);
+      return { valid: false, error: 'The OTP code has expired. Please request a new code.' };
+    }
+
+    if (stored.purpose !== purpose) {
+      return { valid: false, error: 'Invalid OTP purpose.' };
+    }
+
+    if (stored.code !== code.trim()) {
+      return { valid: false, error: 'Incorrect 6-digit OTP code entered. Please check your email or SMS and try again.' };
+    }
+
+    // OTP is valid - consume it
+    this.otps.delete(key);
+    return { valid: true, otpData: { email: stored.email, phone: stored.phone, userData: stored.userData } };
+  }
+
   createUser(data: {
     email: string;
+    phone?: string;
     name: string;
-    password: string;
+    password?: string;
     role: User['role'];
     universityOrCompany?: string;
     targetRole?: string;
@@ -434,9 +565,12 @@ class DatabaseService {
       recruiter: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80'
     };
 
+    const defaultPhone = data.phone || (data.role === 'student' ? '+1 (555) 349-2810' : data.role === 'university' ? '+1 (555) 782-9012' : '+1 (555) 914-6372');
+
     const newUser: User & { passwordHash: string } = {
       id,
       email: data.email,
+      phone: defaultPhone,
       name: data.name,
       role: data.role,
       avatar: defaultAvatars[data.role] || defaultAvatars.student,
@@ -445,7 +579,7 @@ class DatabaseService {
       universityOrCompany: data.universityOrCompany || (data.role === 'student' ? 'Engineering Institute' : 'Tech Company'),
       targetRole: data.targetRole || (data.role === 'student' ? 'Full Stack Developer' : 'Talent Partner'),
       skills: data.role === 'student' ? ['JavaScript', 'TypeScript', 'React', 'Git', 'REST APIs'] : ['Talent Acquisition', 'AST Screening'],
-      passwordHash: hashPassword(data.password),
+      passwordHash: hashPassword(data.password || 'password123'),
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
     };
@@ -480,7 +614,8 @@ class DatabaseService {
       ...current,
       ...updates,
       id: current.id,
-      email: current.email,
+      email: updates.email || current.email,
+      phone: updates.phone !== undefined ? updates.phone : current.phone,
       passwordHash: current.passwordHash,
       updatedAt: new Date().toISOString()
     };

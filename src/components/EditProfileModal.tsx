@@ -12,6 +12,8 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({ isOpen, onCl
   if (!isOpen || !user) return null;
 
   const [name, setName] = useState(user.name || '');
+  const [email] = useState(user.email || '');
+  const [phone, setPhone] = useState(user.phone || '');
   const [headline, setHeadline] = useState(user.headline || '');
   const [bio, setBio] = useState(user.bio || '');
   const [universityOrCompany, setUniversityOrCompany] = useState(user.universityOrCompany || '');
@@ -37,6 +39,7 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({ isOpen, onCl
 
       await updateProfile({
         name,
+        phone,
         headline,
         bio,
         universityOrCompany,
@@ -150,6 +153,34 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({ isOpen, onCl
                 onChange={(e) => setUniversityOrCompany(e.target.value)}
                 placeholder="Tech University / CloudScale"
                 className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:bg-white transition-colors"
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-xs font-medium text-slate-700 mb-1 flex items-center justify-between">
+                <span>Account Email (Verified)</span>
+                <span className="text-[10px] text-emerald-600 font-semibold bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">2FA Active</span>
+              </label>
+              <input
+                type="email"
+                disabled
+                value={email}
+                className="w-full px-3 py-2 bg-slate-100 border border-slate-200 rounded-lg text-sm text-slate-600 cursor-not-allowed opacity-90 font-mono"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-medium text-slate-700 mb-1 flex items-center justify-between">
+                <span>Mobile Number (SMS OTP)</span>
+                <span className="text-[10px] text-indigo-600 font-semibold bg-indigo-50 px-1.5 py-0.5 rounded border border-indigo-200">OTP Delivery</span>
+              </label>
+              <input
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="+1 (555) 349-2810"
+                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:bg-white transition-colors font-mono"
               />
             </div>
           </div>

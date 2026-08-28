@@ -1,0 +1,676 @@
+{
+  "users": [
+    {
+      "id": "user_student_1",
+      "email": "suparshva.jain@techuniv.edu",
+      "phone": "+1 (555) 349-2810",
+      "name": "SUPARSHVA JAIN",
+      "role": "student",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      "headline": "Aspiring Cloud & Backend Engineer | CS Senior @ Tech University",
+      "bio": "Passionate about building scalable distributed systems, microservices, and asynchronous event pipelines. Actively leveling up in Kubernetes, Redis caching, and CI/CD pipelines.",
+      "universityOrCompany": "Tech University (Dept. of Computer Science)",
+      "targetRole": "Junior Backend & Cloud Engineer",
+      "githubUrl": "https://github.com/suparshvajain-dev",
+      "linkedinUrl": "https://linkedin.com/in/suparshvajain",
+      "portfolioUrl": "https://suparshvajain.dev",
+      "skills": [
+        "TypeScript",
+        "Node.js",
+        "Python",
+        "FastAPI",
+        "PostgreSQL",
+        "Docker",
+        "REST APIs",
+        "Git"
+      ],
+      "passwordHash": "6be187659d2c54180cfaa0f058fe2dff86c870535fef59b5ee64d78a6f2dbff7",
+      "createdAt": "2026-08-01T10:00:00.000Z",
+      "updatedAt": "2026-08-20T14:30:00.000Z"
+    },
+    {
+      "id": "user_univ_1",
+      "email": "sarah.chen@techuniv.edu",
+      "phone": "+1 (555) 782-9012",
+      "name": "Dr. Sarah Chen",
+      "role": "university",
+      "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80",
+      "headline": "Head of Training & Placement Cell | Professor of Software Engineering",
+      "bio": "Overseeing placement readiness for 450+ CS & IT graduates. Utilizing SkillBridge AI vector delta analytics to modernize curriculum electives.",
+      "universityOrCompany": "Tech University Placement Directorate",
+      "targetRole": "Academic Director / T&P Cell Head",
+      "githubUrl": "https://github.com/techuniv-tnp",
+      "linkedinUrl": "https://linkedin.com/in/dr-sarah-chen",
+      "skills": [
+        "Curriculum Engineering",
+        "Batch Skill Assessment",
+        "Industry Relations",
+        "Accreditation"
+      ],
+      "passwordHash": "6be187659d2c54180cfaa0f058fe2dff86c870535fef59b5ee64d78a6f2dbff7",
+      "createdAt": "2026-07-15T09:00:00.000Z",
+      "updatedAt": "2026-08-18T11:00:00.000Z"
+    },
+    {
+      "id": "user_recruiter_1",
+      "email": "david.zhang@cloudscale.io",
+      "phone": "+1 (555) 914-6372",
+      "name": "David Zhang",
+      "role": "recruiter",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+      "headline": "Lead Technical Talent Partner @ CloudScale Systems",
+      "bio": "Scouting top software engineering talent with verified hands-on AST capabilities and real GitHub code repositories.",
+      "universityOrCompany": "CloudScale Systems (Infrastructure & AI)",
+      "targetRole": "Senior Tech Recruiter",
+      "githubUrl": "https://github.com/cloudscale-recruiting",
+      "linkedinUrl": "https://linkedin.com/in/david-zhang-tech",
+      "skills": [
+        "Talent Sourcing",
+        "AST Code Evaluation",
+        "Technical Screening",
+        "Campus Hiring"
+      ],
+      "passwordHash": "6be187659d2c54180cfaa0f058fe2dff86c870535fef59b5ee64d78a6f2dbff7",
+      "createdAt": "2026-08-05T08:00:00.000Z",
+      "updatedAt": "2026-08-22T16:00:00.000Z"
+    }
+  ],
+  "galleryItems": [
+    {
+      "id": "proj_1",
+      "userId": "user_student_1",
+      "authorName": "SUPARSHVA JAIN",
+      "authorAvatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      "authorRole": "student",
+      "title": "Distributed Asynchronous Task Queue with Redis Streams",
+      "summary": "High-throughput fault-tolerant task queue with worker pools, dead-letter queues, and real-time execution telemetry.",
+      "description": "Built a production-grade distributed worker system inspired by Celery and BullMQ. Features Redis Stream consumer groups, exponential backoff retries, and Prometheus metrics export. Resolved high latency bottlenecks with atomic pipeline operations.",
+      "category": "Cloud & DevOps",
+      "tags": [
+        "Redis",
+        "Docker",
+        "Node.js",
+        "Distributed Systems",
+        "CI/CD",
+        "Prometheus"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1618401471353-b98aedd04e11?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "coverImage": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
+      "repoUrl": "https://github.com/suparshvajain-dev/distributed-task-queue",
+      "liveUrl": "https://queue-telemetry.suparshvajain.dev",
+      "astScore": 94,
+      "astBreakdown": {
+        "complexityScore": 92,
+        "testCoverageEst": 88,
+        "containerized": true,
+        "cachingImplemented": true,
+        "asyncConcurrency": true,
+        "ciCdPipelines": true
+      },
+      "verificationStatus": "verified",
+      "keyFeatures": [
+        "Multi-worker concurrency with atomic claim semantics",
+        "Exponential backoff with automated Dead Letter Queue recovery",
+        "Full Docker Compose multi-service deployment with healthchecks",
+        "PyTest & Jest integration suites running on GitHub Actions CI"
+      ],
+      "techStack": [
+        "Node.js",
+        "TypeScript",
+        "Redis Streams",
+        "Docker Compose",
+        "GitHub Actions",
+        "Prometheus"
+      ],
+      "metrics": [
+        {
+          "name": "Throughput",
+          "value": "14,200 req/sec"
+        },
+        {
+          "name": "P99 Latency",
+          "value": "3.4ms"
+        },
+        {
+          "name": "Test Coverage",
+          "value": "91.4%"
+        }
+      ],
+      "sprintMilestoneLinked": "Sprint 1 - Redis Caching & Queue Architecture",
+      "createdAt": "2026-08-10T12:00:00.000Z",
+      "updatedAt": "2026-08-19T17:00:00.000Z",
+      "likesCount": 24,
+      "likedBy": [
+        "user_recruiter_1",
+        "user_univ_1"
+      ]
+    },
+    {
+      "id": "proj_2",
+      "userId": "user_student_1",
+      "authorName": "SUPARSHVA JAIN",
+      "authorAvatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      "authorRole": "student",
+      "title": "FastAPI Microservice with PyTest Integration & OpenAPI Specs",
+      "summary": "Containerized RESTful microservice with JWT authentication, PostgreSQL ORM, and comprehensive test suite.",
+      "description": "Designed a microservice implementing clean architecture and repository patterns. Includes automated PyTest suites with Mock fixtures, OpenAPI auto-generated contracts, and a multi-stage Alpine Docker build minimizing image size to 68MB.",
+      "category": "Full-Stack",
+      "tags": [
+        "FastAPI",
+        "Python",
+        "PyTest",
+        "PostgreSQL",
+        "Docker",
+        "SQLAlchemy"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "coverImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+      "repoUrl": "https://github.com/suparshvajain-dev/fastapi-secure-service",
+      "liveUrl": "https://api-service.suparshvajain.dev/docs",
+      "astScore": 89,
+      "astBreakdown": {
+        "complexityScore": 86,
+        "testCoverageEst": 93,
+        "containerized": true,
+        "cachingImplemented": false,
+        "asyncConcurrency": true,
+        "ciCdPipelines": true
+      },
+      "verificationStatus": "verified",
+      "keyFeatures": [
+        "Asynchronous database queries with SQLAlchemy 2.0 and asyncpg",
+        "End-to-end PyTest fixtures mocking external OAuth providers",
+        "Multi-stage Dockerfile cutting container payload by 72%",
+        "Strict input validation using Pydantic v2 schemas"
+      ],
+      "techStack": [
+        "Python 3.12",
+        "FastAPI",
+        "SQLAlchemy",
+        "Alembic",
+        "PyTest",
+        "Docker"
+      ],
+      "metrics": [
+        {
+          "name": "Coverage",
+          "value": "94.2%"
+        },
+        {
+          "name": "Build Size",
+          "value": "68 MB"
+        },
+        {
+          "name": "API Endpoints",
+          "value": "18 Routes"
+        }
+      ],
+      "sprintMilestoneLinked": "Sprint 2 - Test Suites & Containerization",
+      "createdAt": "2026-08-14T09:30:00.000Z",
+      "updatedAt": "2026-08-21T15:00:00.000Z",
+      "likesCount": 19,
+      "likedBy": [
+        "user_recruiter_1"
+      ]
+    },
+    {
+      "id": "proj_3",
+      "userId": "user_student_1",
+      "authorName": "SUPARSHVA JAIN",
+      "authorAvatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      "authorRole": "student",
+      "title": "Semantic Vector Search Engine with ChromaDB & LangChain",
+      "summary": "High-dimensional embeddings search engine indexing tech documentation with cosine distance filtering.",
+      "description": "Implements semantic question-answering over unstructured technical documentation. Evaluates similarity matrices via vector embeddings and provides sub-second query response times with token usage streaming.",
+      "category": "AI & ML",
+      "tags": [
+        "Vector DB",
+        "ChromaDB",
+        "Python",
+        "LangChain",
+        "Gemini API",
+        "Embeddings"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "coverImage": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80",
+      "repoUrl": "https://github.com/suparshvajain-dev/vector-semantic-search",
+      "liveUrl": "https://vector-demo.suparshvajain.dev",
+      "astScore": 91,
+      "astBreakdown": {
+        "complexityScore": 94,
+        "testCoverageEst": 84,
+        "containerized": true,
+        "cachingImplemented": true,
+        "asyncConcurrency": true,
+        "ciCdPipelines": true
+      },
+      "verificationStatus": "verified",
+      "keyFeatures": [
+        "ChromaDB collection management with cosine metric indexing",
+        "Chunking algorithms with semantic boundary preservation",
+        "Server-Sent Events (SSE) streaming model responses"
+      ],
+      "techStack": [
+        "Python",
+        "ChromaDB",
+        "Google GenAI SDK",
+        "FastAPI",
+        "Docker"
+      ],
+      "metrics": [
+        {
+          "name": "Query Latency",
+          "value": "42ms"
+        },
+        {
+          "name": "Indexed Chunks",
+          "value": "25,000+"
+        },
+        {
+          "name": "Embedding Dim",
+          "value": "768 Vectors"
+        }
+      ],
+      "sprintMilestoneLinked": "Sprint 3 - Vector Delta & AI Integration",
+      "createdAt": "2026-08-18T14:00:00.000Z",
+      "updatedAt": "2026-08-22T18:00:00.000Z",
+      "likesCount": 31,
+      "likedBy": [
+        "user_recruiter_1",
+        "user_univ_1"
+      ]
+    }
+  ],
+  "diagnostics": [
+    {
+      "id": "diag_1787502370430",
+      "userId": "user_student_1",
+      "targetJobTitle": "Full Stack Distributed Systems Developer",
+      "jobDescriptionSummary": "The role requires strong full-stack distributed engineering capabilities including TypeScript, asynchronous queue orchestrations (BullMQ/Redis), relational ORM modeling, Docker Compose multi-container setups, and comprehensive testing.",
+      "overallFitScore": 68,
+      "radarData": [
+        {
+          "skill": "API Architecture",
+          "studentScore": 72,
+          "marketBaseline": 85,
+          "fullMark": 100
+        },
+        {
+          "skill": "Cloud & Docker",
+          "studentScore": 65,
+          "marketBaseline": 80,
+          "fullMark": 100
+        },
+        {
+          "skill": "PyTest & Testing",
+          "studentScore": 40,
+          "marketBaseline": 78,
+          "fullMark": 100
+        },
+        {
+          "skill": "CI/CD Automation",
+          "studentScore": 45,
+          "marketBaseline": 75,
+          "fullMark": 100
+        },
+        {
+          "skill": "Caching (Redis)",
+          "studentScore": 75,
+          "marketBaseline": 82,
+          "fullMark": 100
+        },
+        {
+          "skill": "System Design",
+          "studentScore": 60,
+          "marketBaseline": 85,
+          "fullMark": 100
+        }
+      ],
+      "extractedAST": {
+        "languages": [
+          "TypeScript",
+          "JavaScript",
+          "Python",
+          "SQL"
+        ],
+        "functionsCount": 28,
+        "asyncCallsDetected": 14,
+        "testSuitesFound": 1,
+        "dockerfilePresent": true,
+        "cicdDetected": false,
+        "redisCachingPresent": true,
+        "ormUsed": true,
+        "architectureType": "Monolith with Asynchronous Micro-worker",
+        "identifiedPatterns": [
+          "Consumer Group Polling",
+          "Async/Await Controller",
+          "Redis Streams"
+        ]
+      },
+      "deficits": [
+        {
+          "category": "Automated Testing & Quality Gates",
+          "missingSkill": "Unit & Integration Test Suites (Jest/PyTest with Mocking)",
+          "impact": "High Risk of Production Regressions",
+          "description": "The repository lacks integration tests for concurrency handling, Redis stream consumer acknowledgements, and failure dead-letter queue routing.",
+          "recommendedAction": "Implement end-to-end integration tests using Vitest/Jest and testcontainers-node for Redis and PostgreSQL isolation."
+        },
+        {
+          "category": "CI/CD & Deployment Automation",
+          "missingSkill": "GitHub Actions Automated Pipeline & Lint/Test Check",
+          "impact": "Slow Delivery & Deployment Fragility",
+          "description": "No CI workflow file detected in repository to run automated linting, type-checking, or container security scans on pull requests.",
+          "recommendedAction": "Configure a multi-stage GitHub Actions workflow executing build, test, and containerized Docker image pushes."
+        },
+        {
+          "category": "Reliability & Rate Limiting",
+          "missingSkill": "Distributed Rate Limiting and Token Bucket Implementation",
+          "impact": "Vulnerability to Resource Starvation and Cascading Failures",
+          "description": "Absence of client rate-limiting middleware or backpressure management for the consumer worker pool.",
+          "recommendedAction": "Integrate Redis-based sliding-window rate limiting and exponential backoff retry logic in queue processing."
+        }
+      ],
+      "roadmap30Days": [
+        {
+          "week": 1,
+          "weekTitle": "Queue Hardening and Failure Handling",
+          "goal": "Transition raw Redis stream consumer logic to robust queue management with ack/nack and dead-letter queues.",
+          "tasks": [
+            {
+              "id": "T-001",
+              "title": "Implement Acknowledgment & Dead Letter Queue (DLQ)",
+              "description": "Wrap worker stream consumption in try/catch blocks with XACK upon success and forward poisoned pills to an isolated DLQ stream.",
+              "deliverable": "worker.ts supporting retry counts and DLQ forwarding.",
+              "completed": false,
+              "starterSnippet": "export async function processTaskWithRetry(job: any, client: any) { try { await handleJob(job); await client.xack('queue_stream', 'workers', job.id); } catch(err) { await client.xadd('dlq_stream', '*', 'payload', JSON.stringify(job)); } }"
+            },
+            {
+              "id": "T-002",
+              "title": "Distributed Rate Limiting Middleware",
+              "description": "Build an Express/FastAPI middleware enforcing sliding-window rate limits via Redis EVAL scripts.",
+              "deliverable": "rateLimiter.ts middleware applied to core API routes.",
+              "completed": false,
+              "starterSnippet": "export const rateLimit = (limit: number, windowSec: number) => async (req: any, res: any, next: any) => { const key = `rate:${req.ip}`; const current = await redis.incr(key); if (current === 1) await redis.expire(key, windowSec); if (current > limit) return res.status(429).json({ error: 'Too many requests' }); next(); };"
+            }
+          ]
+        },
+        {
+          "week": 2,
+          "weekTitle": "Relational Data Modeling & ORM Performance",
+          "goal": "Integrate Prisma/Drizzle ORM with connection pooling and database indexing for task metadata.",
+          "tasks": [
+            {
+              "id": "T-003",
+              "title": "Schema Migration and Index Optimization",
+              "description": "Define relational schema for job logs, status states, and user audit trails with compound indexes on status and created_at.",
+              "deliverable": "schema.prisma file with composite indexes and migration scripts.",
+              "completed": false,
+              "starterSnippet": "model JobRecord { id String @id @default(uuid()) status String createdAt DateTime @default(now()) payload Json @@index([status, createdAt]) }"
+            }
+          ]
+        },
+        {
+          "week": 3,
+          "weekTitle": "Containerized Integration Testing",
+          "goal": "Establish automated unit and integration testing pipelines with Testcontainers.",
+          "tasks": [
+            {
+              "id": "T-004",
+              "title": "Integration Tests with Testcontainers",
+              "description": "Write integration test suites spinning up ephemeral Redis and PostgreSQL containers to validate end-to-end task workflow.",
+              "deliverable": "queue.test.ts passing 100% of integration cases in CI.",
+              "completed": false,
+              "starterSnippet": "import { GenericContainer } from 'testcontainers'; test('processes queue item', async () => { const container = await new GenericContainer('redis:7-alpine').withExposedPorts(6379).start(); expect(container.getId()).toBeDefined(); await container.stop(); });"
+            }
+          ]
+        },
+        {
+          "week": 4,
+          "weekTitle": "CI/CD & Observability Deployment",
+          "goal": "Implement GitHub Actions for multi-architecture Docker builds, Prometheus metrics, and automated deployment.",
+          "tasks": [
+            {
+              "id": "T-005",
+              "title": "GitHub Actions CI/CD Pipeline",
+              "description": "Configure automated CI workflow with linting, unit/integration testing, Docker building, and artifact verification.",
+              "deliverable": ".github/workflows/main.yml active on master branch.",
+              "completed": false,
+              "starterSnippet": "name: CI on: [push, pull_request] jobs: test: runs-on: ubuntu-latest steps: - uses: actions/checkout@v4 - uses: actions/setup-node@v4 with: { node-version: 20 } - run: npm ci && npm test"
+            }
+          ]
+        }
+      ],
+      "analyzedAt": "2026-08-23T16:26:10.430Z"
+    },
+    {
+      "id": "diag_student_1",
+      "userId": "user_student_1",
+      "targetJobTitle": "Junior Cloud Native & Backend Engineer",
+      "jobDescriptionSummary": "Requires production experience with FastAPI/Node.js microservices, Docker containerization, Redis multi-tier caching, PyTest integration testing, and GitHub Actions CI/CD workflows.",
+      "overallFitScore": 84,
+      "radarData": [
+        {
+          "skill": "API Architecture",
+          "studentScore": 88,
+          "marketBaseline": 85,
+          "fullMark": 100
+        },
+        {
+          "skill": "Cloud & Docker",
+          "studentScore": 85,
+          "marketBaseline": 90,
+          "fullMark": 100
+        },
+        {
+          "skill": "PyTest & Testing",
+          "studentScore": 82,
+          "marketBaseline": 85,
+          "fullMark": 100
+        },
+        {
+          "skill": "CI/CD Automation",
+          "studentScore": 78,
+          "marketBaseline": 80,
+          "fullMark": 100
+        },
+        {
+          "skill": "Caching (Redis)",
+          "studentScore": 90,
+          "marketBaseline": 75,
+          "fullMark": 100
+        },
+        {
+          "skill": "System Design",
+          "studentScore": 80,
+          "marketBaseline": 85,
+          "fullMark": 100
+        }
+      ],
+      "extractedAST": {
+        "languages": [
+          "TypeScript",
+          "Python",
+          "SQL"
+        ],
+        "functionsCount": 142,
+        "asyncCallsDetected": 78,
+        "testSuitesFound": 8,
+        "dockerfilePresent": true,
+        "cicdDetected": true,
+        "redisCachingPresent": true,
+        "ormUsed": true,
+        "architectureType": "Modular Layered Microservice",
+        "identifiedPatterns": [
+          "Repository Pattern",
+          "Producer-Consumer",
+          "Middleware Interceptors",
+          "Exponential Backoff"
+        ]
+      },
+      "deficits": [
+        {
+          "category": "CI/CD Automation",
+          "missingSkill": "Multi-environment deployment pipeline with automated rollback triggers",
+          "impact": "Medium",
+          "description": "Current GitHub Actions workflow only runs lint & unit tests, lacking container registry push and staging deployment stages.",
+          "recommendedAction": "Add a GitHub Actions workflow to build and push Docker images to GitHub Packages (GHCR) and run smoke tests."
+        },
+        {
+          "category": "System Design & Security",
+          "missingSkill": "Rate limiting and JWT revocation with Redis blacklist",
+          "impact": "High",
+          "description": "Authentication token expiration relies strictly on client timestamp without server-side revocation mechanism.",
+          "recommendedAction": "Implement Redis token blocklisting and token bucket rate limiting on public API endpoints."
+        }
+      ],
+      "roadmap30Days": [
+        {
+          "week": 1,
+          "weekTitle": "Sprint 1: Redis Caching & Distributed Worker Architecture",
+          "goal": "Implement production-grade asynchronous queue and Redis multi-level caching.",
+          "tasks": [
+            {
+              "id": "task_w1_1",
+              "title": "Build Redis Streams Consumer Group Worker",
+              "description": "Write an asynchronous worker pool with ack/nack retry loops and dead letter queue.",
+              "deliverable": "Task worker repo with 10k/sec benchmark script",
+              "starterSnippet": "// Redis Stream consumer group worker\nasync function consumeTasks() {\n  const results = await redis.xreadgroup('GROUP', 'workers', 'worker-1', 'COUNT', '10', 'BLOCK', '2000', 'STREAMS', 'tasks', '>');\n  for (const [stream, entries] of results || []) {\n    for (const [id, fields] of entries) {\n      await processTask(id, fields);\n      await redis.xack('tasks', 'workers', id);\n    }\n  }\n}",
+              "completed": true,
+              "completedAt": "2026-08-11T16:00:00.000Z",
+              "verifiedGalleryItemId": "proj_1"
+            },
+            {
+              "id": "task_w1_2",
+              "title": "Add Prometheus Latency & Error Histogram",
+              "description": "Instrument task queue with prometheus-client and export /metrics endpoint.",
+              "deliverable": "Grafana-ready dashboard config and prometheus metrics",
+              "completed": true,
+              "completedAt": "2026-08-13T18:00:00.000Z",
+              "verifiedGalleryItemId": "proj_1"
+            }
+          ]
+        },
+        {
+          "week": 2,
+          "weekTitle": "Sprint 2: PyTest Fixture Suites & Multi-Stage Dockerization",
+          "goal": "Elevate automated test coverage past 90% and create minimal production Docker images.",
+          "tasks": [
+            {
+              "id": "task_w2_1",
+              "title": "Write PyTest Async Fixtures with Testcontainers/Mocking",
+              "description": "Create end-to-end integration tests for database operations and API controllers.",
+              "deliverable": "PyTest suite with HTML coverage report > 90%",
+              "starterSnippet": "import pytest\nfrom httpx import AsyncClient\nfrom app.main import app\n\n@pytest.mark.asyncio\nasync def test_create_item_with_auth(client: AsyncClient, auth_headers):\n    res = await client.post('/api/items', json={'title': 'Test'}, headers=auth_headers)\n    assert res.status_code == 201\n    assert res.json()['title'] == 'Test'",
+              "completed": true,
+              "completedAt": "2026-08-16T15:00:00.000Z",
+              "verifiedGalleryItemId": "proj_2"
+            },
+            {
+              "id": "task_w2_2",
+              "title": "Write Multi-Stage Dockerfile with Non-Root Security",
+              "description": "Implement multi-stage Alpine build with security scanner passing zero CVEs.",
+              "deliverable": "Dockerfile with size < 80MB",
+              "starterSnippet": "FROM python:3.12-alpine AS builder\nWORKDIR /app\nCOPY requirements.txt .\nRUN pip install --no-cache-dir --prefix=/install -r requirements.txt\n\nFROM python:3.12-alpine\nWORKDIR /app\nRUN addgroup -S appgroup && adduser -S appuser -G appgroup\nCOPY --from=builder /install /usr/local\nCOPY . .\nUSER appuser\nCMD [\"uvicorn\", \"app.main:app\", \"--host\", \"0.0.0.0\", \"--port\", \"8000\"]",
+              "completed": true,
+              "completedAt": "2026-08-17T11:00:00.000Z",
+              "verifiedGalleryItemId": "proj_2"
+            }
+          ]
+        },
+        {
+          "week": 3,
+          "weekTitle": "Sprint 3: High-Dimensional Vector Search & RAG System",
+          "goal": "Build ChromaDB cosine similarity engine for semantic developer matching.",
+          "tasks": [
+            {
+              "id": "task_w3_1",
+              "title": "Implement ChromaDB Collection Indexing",
+              "description": "Extract AST tokens and generate 768-dim embeddings for project source code.",
+              "deliverable": "Vector pipeline service with cosine distance search",
+              "starterSnippet": "import chromadb\nclient = chromadb.PersistentClient(path=\"./chroma_db\")\ncollection = client.get_or_create_collection(\"tech_jds\", metadata={\"hnsw:space\": \"cosine\"})\ncollection.add(ids=[\"jd_101\"], documents=[\"Senior Cloud Backend Developer...\"])",
+              "completed": true,
+              "completedAt": "2026-08-20T17:30:00.000Z",
+              "verifiedGalleryItemId": "proj_3"
+            },
+            {
+              "id": "task_w3_2",
+              "title": "Integrate Gemini Structured Output Schema",
+              "description": "Extract structured developer AST attributes using Gemini 3.7 Flash.",
+              "deliverable": "JSON schema validator passing 100% test fixtures",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "week": 4,
+          "weekTitle": "Sprint 4: GitHub Actions Multi-Environment CI/CD & Production Hardening",
+          "goal": "Deploy automated staging verification pipeline and rate limiter.",
+          "tasks": [
+            {
+              "id": "task_w4_1",
+              "title": "Construct GitHub Actions Release Workflow",
+              "description": "Trigger lint, test, docker build, vulnerability scan, and auto-release tagging on main branch.",
+              "deliverable": ".github/workflows/deploy.yml with passing badge",
+              "starterSnippet": "name: CI/CD Pipeline\non:\n  push:\n    branches: [main]\njobs:\n  test-and-build:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: npm ci && npm test\n      - run: docker build -t skillbridge-app .",
+              "completed": false
+            },
+            {
+              "id": "task_w4_2",
+              "title": "Token Bucket Rate Limiting with Redis",
+              "description": "Protect all API routes from burst attacks with configurable quotas per IP/API key.",
+              "deliverable": "Middleware module with 429 response handling",
+              "completed": false
+            }
+          ]
+        }
+      ],
+      "analyzedAt": "2026-08-22T08:00:00.000Z"
+    }
+  ],
+  "sessions": [
+    {
+      "token": "token_alex_rivera",
+      "userId": "user_student_1",
+      "createdAt": "2026-08-23T16:18:25.784Z"
+    },
+    {
+      "token": "token_sarah_chen",
+      "userId": "user_univ_1",
+      "createdAt": "2026-08-23T16:18:25.784Z"
+    },
+    {
+      "token": "token_david_zhang",
+      "userId": "user_recruiter_1",
+      "createdAt": "2026-08-23T16:18:25.784Z"
+    },
+    {
+      "token": "token_user_student_1_36e2e8ccd520ffe9e1fc2ace724714f6",
+      "userId": "user_student_1",
+      "createdAt": "2026-08-23T16:24:31.421Z"
+    },
+    {
+      "token": "token_user_student_1_ad0176dab05abb2c1abb5971d3fea8f5",
+      "userId": "user_student_1",
+      "createdAt": "2026-08-23T16:24:31.473Z"
+    },
+    {
+      "token": "token_user_recruiter_1_650bb82ab1471dac5469fdf25cdad9ad",
+      "userId": "user_recruiter_1",
+      "createdAt": "2026-08-23T16:25:25.559Z"
+    },
+    {
+      "token": "token_user_student_1_7073b7a79862e3aa92387d04ad1ab30c",
+      "userId": "user_student_1",
+      "createdAt": "2026-08-23T16:25:34.601Z"
+    }
+  ]
+}

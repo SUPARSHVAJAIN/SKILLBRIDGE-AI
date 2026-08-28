@@ -63,9 +63,9 @@ export const DiagnosticSection: React.FC<DiagnosticSectionProps> = ({
   const [targetJobTitle, setTargetJobTitle] = useState('Junior Cloud Native & Backend Engineer');
   const [jobDescription, setJobDescription] = useState(PRESET_JDS[0].jd);
   const [resumeText, setResumeText] = useState(
-    'Alex Rivera — CS Senior with experience in TypeScript, Node.js, Python, PostgreSQL, REST APIs. Built a task queue project with Redis and Docker. Familiar with Git and agile workflows.'
+    'SUPARSHVA JAIN — CS Senior with experience in TypeScript, Node.js, Python, PostgreSQL, REST APIs. Built a task queue project with Redis and Docker. Familiar with Git and agile workflows.'
   );
-  const [githubRepoUrl, setGithubRepoUrl] = useState('https://github.com/alexrivera-dev/distributed-task-queue');
+  const [githubRepoUrl, setGithubRepoUrl] = useState('https://github.com/suparshvajain-dev/distributed-task-queue');
   const [repoCodeSnippet, setRepoCodeSnippet] = useState(
     `// Sample Worker Controller\nexport async function processQueue(job) {\n  const res = await redis.xreadgroup('GROUP', 'workers', 'consumer-1');\n  return res;\n}`
   );

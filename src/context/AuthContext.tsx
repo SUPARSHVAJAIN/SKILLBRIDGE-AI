@@ -1,12 +1,25 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { User, UserRole } from '../types';
+import { User, UserRole, OtpDeliveryResponse } from '../types';
 
 interface AuthContextType {
   user: User | null;
   token: string | null;
   isLoading: boolean;
-  login: (email: string, password: string) => Promise<void>;
-  register: (data: { email: string; password: string; name: string; role: UserRole; universityOrCompany?: string; targetRole?: string }) => Promise<void>;
+  login: (identifier: string, password: string) => Promise<void>;
+  register: (data: { email: string; phone?: string; password?: string; name: string; role: UserRole; universityOrCompany?: string; targetRole?: string }) => Promise<void>;
+  requestOtp: (data: {
+    identifier?: string;
+    email?: string;
+    phone?: string;
+    purpose?: 'login' | 'register';
+    name?: string;
+    password?: string;
+    role?: UserRole;
+    universityOrCompany?: string;
+    targetRole?: string;
+  }) => Promise<OtpDeliveryResponse & { identifier: string; userName?: string }>;
+  verifyOtp: (data: { identifier: string; code: string; purpose?: 'login' | 'register' }) => Promise<{ user: User; token: string }>;
+  loginWithCredentialsAndOtp: (identifier: string, password: string) => Promise<OtpDeliveryResponse & { identifier: string; userName?: string }>;
   demoLogin: (role: UserRole) => Promise<void>;
   logout: () => void;
   updateProfile: (data: Partial<User>) => Promise<void>;
@@ -45,18 +58,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (token) {
       fetchCurrentUser(token);
     } else {
-      // Auto demo login as Alex Rivera initially for seamless instant experience
+      // Auto demo login initially for seamless instant experience
       demoLogin('student').catch(() => setIsLoading(false));
     }
   }, []);
 
-  const login = async (email: string, password: string) => {
+  const login = async (identifier: string, password: string) => {
     setIsLoading(true);
     try {
       const res = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ identifier, password })
       });
       const data = await res.json();
       if (!res.ok) {
@@ -70,7 +83,72 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
-  const register = async (payload: { email: string; password: string; name: string; role: UserRole; universityOrCompany?: string; targetRole?: string }) => {
+  const loginWithCredentialsAndOtp = async (identifier: string, password: string) => {
+    const res = await fetch('/api/auth/login-with-password', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ identifier, password })
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      throw new Error(data.error || 'Invalid credentials');
+    }
+    return data;
+  };
+
+  const requestOtp = async (payload: {
+    identifier?: string;
+    email?: string;
+    phone?: string;
+    purpose?: 'login' | 'register';
+    name?: string;
+    password?: string;
+    role?: UserRole;
+    universityOrCompany?: string;
+    targetRole?: string;
+  }) => {
+    const res = await fetch('/api/auth/request-otp', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      throw new Error(data.error || 'Failed to dispatch verification code');
+    }
+    return data;
+  };
+
+  const verifyOtp = async (payload: { identifier: string; code: string; purpose?: 'login' | 'register' }) => {
+    setIsLoading(true);
+    try {
+      const res = await fetch('/api/auth/verify-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'OTP verification failed');
+      }
+      setToken(data.token);
+      setUser(data.user);
+      localStorage.setItem('skillbridge_token', data.token);
+      return data;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const register = async (payload: {
+    email: string;
+    phone?: string;
+    password?: string;
+    name: string;
+    role: UserRole;
+    universityOrCompany?: string;
+    targetRole?: string;
+  }) => {
     setIsLoading(true);
     try {
       const res = await fetch('/api/auth/register', {
@@ -147,6 +225,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         isLoading,
         login,
         register,
+        requestOtp,
+        verifyOtp,
+        loginWithCredentialsAndOtp,
         demoLogin,
         logout,
         updateProfile,

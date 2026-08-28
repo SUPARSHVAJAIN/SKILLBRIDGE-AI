@@ -1,7 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express';
 import path from 'path';
 import dotenv from 'dotenv';
-import { db } from './server/db';
+import { db, hashPassword } from './server/db';
 import { analyzePortfolioWithGemini } from './server/geminiService';
 import { User } from './src/types';
 
@@ -58,9 +58,179 @@ app.get('/api/health', (req, res) => {
 
 // --- Auth Endpoints ---
 
+// Request OTP for Login or Registration (Dual delivery to Email and Mobile)
+app.post('/api/auth/request-otp', (req, res) => {
+  try {
+    const { identifier, email, phone, purpose = 'login', name, role, universityOrCompany, targetRole, password } = req.body;
+
+    if (purpose === 'login') {
+      const targetId = identifier || email || phone;
+      if (!targetId) {
+        return res.status(400).json({ error: 'Please provide your email address or mobile number.' });
+      }
+
+      const user = db.getUserByIdentifier(targetId);
+      if (!user) {
+        return res.status(404).json({ error: 'No account found matching this email or phone number. Please check or sign up.' });
+      }
+
+      const userEmail = user.email;
+      const userPhone = user.phone || phone || '+1 (555) 349-2810';
+
+      const otpResult = db.createOtp(userEmail, userEmail, userPhone, 'login');
+
+      return res.json({
+        success: true,
+        message: `A 6-digit verification code was dispatched to ${otpResult.maskedEmail} and ${otpResult.maskedPhone}`,
+        maskedEmail: otpResult.maskedEmail,
+        maskedPhone: otpResult.maskedPhone,
+        expiresInSeconds: otpResult.expiresInSeconds,
+        demoOtp: otpResult.code,
+        identifier: userEmail,
+        userName: user.name
+      });
+    } else if (purpose === 'register') {
+      const targetEmail = email || identifier;
+      if (!targetEmail || !name) {
+        return res.status(400).json({ error: 'Email, mobile number, and full name are required to register.' });
+      }
+
+      const existing = db.getUserByEmail(targetEmail);
+      if (existing) {
+        return res.status(400).json({ error: 'An account with this email address already exists. Please sign in.' });
+      }
+
+      const targetPhone = phone || '+1 (555) 349-2810';
+      const otpResult = db.createOtp(targetEmail, targetEmail, targetPhone, 'register', {
+        email: targetEmail,
+        phone: targetPhone,
+        name,
+        password: password || 'password123',
+        role: role || 'student',
+        universityOrCompany,
+        targetRole
+      });
+
+      return res.json({
+        success: true,
+        message: `A 6-digit verification code was sent to ${otpResult.maskedEmail} and ${otpResult.maskedPhone}`,
+        maskedEmail: otpResult.maskedEmail,
+        maskedPhone: otpResult.maskedPhone,
+        expiresInSeconds: otpResult.expiresInSeconds,
+        demoOtp: otpResult.code,
+        identifier: targetEmail,
+        userName: name
+      });
+    } else {
+      return res.status(400).json({ error: 'Invalid purpose specified.' });
+    }
+  } catch (err: any) {
+    console.error('Request OTP error:', err);
+    res.status(500).json({ error: err.message || 'Failed to generate OTP.' });
+  }
+});
+
+// Verify OTP for Login or Registration
+app.post('/api/auth/verify-otp', (req, res) => {
+  try {
+    const { identifier, code, purpose = 'login' } = req.body;
+
+    if (!identifier || !code) {
+      return res.status(400).json({ error: 'Identifier (email/mobile) and 6-digit OTP code are required.' });
+    }
+
+    const verification = db.verifyOtp(identifier, code, purpose);
+    if (!verification.valid) {
+      return res.status(400).json({ error: verification.error || 'Invalid OTP code.' });
+    }
+
+    if (purpose === 'login') {
+      const userWithHash = db.getUserByIdentifier(identifier) || (verification.otpData ? db.getUserByEmail(verification.otpData.email) : undefined);
+      if (!userWithHash) {
+        return res.status(404).json({ error: 'User account could not be found.' });
+      }
+
+      const token = db.createSession(userWithHash.id);
+      const { passwordHash: _, ...user } = userWithHash;
+      return res.json({
+        success: true,
+        message: 'Successfully authenticated via dual-channel OTP verification.',
+        user,
+        token
+      });
+    } else if (purpose === 'register') {
+      const userData = verification.otpData?.userData;
+      if (!userData) {
+        return res.status(400).json({ error: 'Registration data session expired. Please try registering again.' });
+      }
+
+      const result = db.createUser({
+        email: userData.email,
+        phone: userData.phone,
+        name: userData.name,
+        password: userData.password,
+        role: userData.role || 'student',
+        universityOrCompany: userData.universityOrCompany,
+        targetRole: userData.targetRole
+      });
+
+      return res.status(201).json({
+        success: true,
+        message: 'Registration verified and account created successfully!',
+        user: result.user,
+        token: result.token
+      });
+    } else {
+      return res.status(400).json({ error: 'Invalid purpose.' });
+    }
+  } catch (err: any) {
+    console.error('Verify OTP error:', err);
+    res.status(500).json({ error: err.message || 'Failed to verify OTP code.' });
+  }
+});
+
+// Password login with Dual-Channel OTP 2FA step
+app.post('/api/auth/login-with-password', (req, res) => {
+  try {
+    const { identifier, email, password } = req.body;
+    const target = identifier || email;
+
+    if (!target || !password) {
+      return res.status(400).json({ error: 'Email/mobile and password are required.' });
+    }
+
+    const userWithHash = db.getUserByIdentifier(target);
+    if (!userWithHash) {
+      return res.status(401).json({ error: 'Invalid login credentials.' });
+    }
+
+    if (userWithHash.passwordHash !== hashPassword(password)) {
+      return res.status(401).json({ error: 'Invalid password. Please try again or use OTP login.' });
+    }
+
+    // Credentials verified! Trigger OTP dual delivery to Email & Mobile
+    const userEmail = userWithHash.email;
+    const userPhone = userWithHash.phone || '+1 (555) 349-2810';
+    const otpResult = db.createOtp(userEmail, userEmail, userPhone, 'login');
+
+    res.json({
+      requireOtp: true,
+      message: `Password verified! A 6-digit confirmation code was sent to ${otpResult.maskedEmail} and ${otpResult.maskedPhone}`,
+      maskedEmail: otpResult.maskedEmail,
+      maskedPhone: otpResult.maskedPhone,
+      expiresInSeconds: otpResult.expiresInSeconds,
+      demoOtp: otpResult.code,
+      identifier: userEmail,
+      userName: userWithHash.name
+    });
+  } catch (err: any) {
+    res.status(500).json({ error: err.message || 'Failed to authenticate.' });
+  }
+});
+
 app.post('/api/auth/register', (req, res) => {
   try {
-    const { email, password, name, role, universityOrCompany, targetRole } = req.body;
+    const { email, phone, password, name, role, universityOrCompany, targetRole } = req.body;
     if (!email || !password || !name) {
       return res.status(400).json({ error: 'Email, password, and name are required.' });
     }
@@ -72,6 +242,7 @@ app.post('/api/auth/register', (req, res) => {
 
     const result = db.createUser({
       email,
+      phone,
       password,
       name,
       role: role || 'student',
@@ -87,18 +258,18 @@ app.post('/api/auth/register', (req, res) => {
 
 app.post('/api/auth/login', (req, res) => {
   try {
-    const { email, password } = req.body;
-    if (!email || !password) {
-      return res.status(400).json({ error: 'Email and password are required.' });
+    const { email, identifier, password } = req.body;
+    const target = identifier || email;
+    if (!target || !password) {
+      return res.status(400).json({ error: 'Email/phone and password are required.' });
     }
 
-    const userWithHash = db.getUserByEmail(email);
+    const userWithHash = db.getUserByIdentifier(target);
     if (!userWithHash) {
       return res.status(401).json({ error: 'Invalid email or password.' });
     }
 
     // Hash check
-    const { hashPassword } = require('./server/db');
     if (userWithHash.passwordHash !== hashPassword(password)) {
       return res.status(401).json({ error: 'Invalid email or password.' });
     }
@@ -111,7 +282,7 @@ app.post('/api/auth/login', (req, res) => {
   }
 });
 
-// Quick demo login (instant 1-click switch for Alex Rivera, Dr. Sarah Chen, David Zhang)
+// Quick demo login (instant 1-click switch for Suparshva Jain, Dr. Sarah Chen, David Zhang)
 app.post('/api/auth/demo-login', (req, res) => {
   try {
     const { role } = req.body; // 'student' | 'university' | 'recruiter'
@@ -120,9 +291,12 @@ app.post('/api/auth/demo-login', (req, res) => {
         ? 'sarah.chen@techuniv.edu'
         : role === 'recruiter'
         ? 'david.zhang@cloudscale.io'
-        : 'alex.rivera@techuniv.edu';
+        : 'suparshva.jain@techuniv.edu';
 
-    const userWithHash = db.getUserByEmail(targetEmail);
+    let userWithHash = db.getUserByEmail(targetEmail);
+    if (!userWithHash && role === 'student') {
+      userWithHash = db.getUserByEmail('alex.rivera@techuniv.edu');
+    }
     if (!userWithHash) {
       return res.status(404).json({ error: 'Demo user not found.' });
     }
